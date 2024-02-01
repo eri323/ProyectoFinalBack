@@ -34,8 +34,8 @@ const httpProductos = {
     putProductos: async (req, res) => {
         try {
             const { id } = req.params;
-            const {Codigo, Nombre, Descripcion, UnidadMedida, PrecioUnitario, Iva, Tipo  } = req.body;
-            const productos = await Productos.findByIdAndUpdate(id, {Codigo, Nombre, Descripcion, UnidadMedida, PrecioUnitario, Iva, Tipo  }, { new: true });
+            const { Codigo, Nombre, Descripcion, UnidadMedida, PrecioUnitario, Iva, Tipo } = req.body;
+            const productos = await Productos.findByIdAndUpdate(id, { Codigo, Nombre, Descripcion, UnidadMedida, PrecioUnitario, Iva, Tipo }, { new: true });
             res.json({ productos });
         } catch (error) {
             res.status(400).json({ error: "Error en el servidor" });
@@ -46,7 +46,7 @@ const httpProductos = {
     putProductosInactivar: async (req, res) => {
         try {
             const { id } = req.params;
-            const productos = await Productos.findByIdAndUpdate(id, { estado: 0 }, { new: true });
+            const productos = await Productos.findByIdAndUpdate(id, { Estado: 0 }, { new: true });
             res.json({ productos });
         } catch (error) {
             res.status(400).json({ error });
@@ -57,7 +57,7 @@ const httpProductos = {
     putProductosActivar: async (req, res) => {
         try {
             const { id } = req.params;
-            const productos = await Productos.findByIdAndUpdate(id, { estado: 1 }, { new: true });
+            const productos = await Productos.findByIdAndUpdate(id, { Estado: 1 }, { new: true });
             res.json({ productos });
         } catch (error) {
             res.status(400).json({ error });

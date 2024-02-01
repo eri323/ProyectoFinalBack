@@ -9,7 +9,7 @@ const ProductoSchema = new mongoose.Schema({
     Iva: {type: String, required: true},
     Tipo: { type: String, required: true},
     createAT: { type: Date, default: Date.now },
-    Estado: { type: Boolean, default: 1 },
+    Estado: { type: Number, default: 1 },
 })
 
 export default mongoose.model("Producto", ProductoSchema)
