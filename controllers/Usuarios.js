@@ -52,7 +52,7 @@ const httpUsuarios = {
     putUsuariosInactivar: async (req, res) => {
         try {
             const { id } = req.params;
-            const usuarios = await Usuarios.findByIdAndUpdate(id, { estado: 0 }, { new: true });
+            const usuarios = await Usuarios.findByIdAndUpdate(id, { Estado: 0 }, { new: true });
             res.json({ usuarios });
         } catch (error) {
             res.status(400).json({ error });
@@ -63,7 +63,7 @@ const httpUsuarios = {
     putUsuariosActivar: async (req, res) => {
         try {
             const { id } = req.params;
-            const usuarios = await Usuarios.findByIdAndUpdate(id, { estado: 1 }, { new: true });
+            const usuarios = await Usuarios.findByIdAndUpdate(id, { Estado: 1 }, { new: true });
             res.json({ usuarios });
         } catch (error) {
             res.status(400).json({ error });
