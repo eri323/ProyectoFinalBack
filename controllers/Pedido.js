@@ -46,7 +46,7 @@ const httpPedidos = {
     putPedidosInactivar: async (req, res) => {
         try {
             const { id } = req.params;
-            const pedidos = await Pedidos.findByIdAndUpdate(id, { estado: 0 }, { new: true });
+            const pedidos = await Pedidos.findByIdAndUpdate(id, { Estado: 0 }, { new: true });
             res.json({ pedidos });
         } catch (error) {
             res.status(400).json({ error });
@@ -57,7 +57,7 @@ const httpPedidos = {
     putPedidosActivar: async (req, res) => {
         try {
             const { id } = req.params;
-            const pedidos = await Pedidos.findByIdAndUpdate(id, { estado: 1 }, { new: true });
+            const pedidos = await Pedidos.findByIdAndUpdate(id, { Estado: 1 }, { new: true });
             res.json({ pedidos });
         } catch (error) {
             res.status(400).json({ error });
