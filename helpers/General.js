@@ -4,7 +4,7 @@ const helpersGeneral = {
         console.log(val);
         console.log("h", val);
         if(typeof val === 'string'){
-            if(val.trim()==='') throw new Error ('Solo espacios no permitidos')
+            if(val.trim()==='') throw new Error ('No se permiten espacios')
         }
     }
 }
