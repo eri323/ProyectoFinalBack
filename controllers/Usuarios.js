@@ -40,8 +40,8 @@ const httpUsuarios = {
     putUsuarios: async (req, res) => {
         try {
             const { id } = req.params;
-            const { Nombre, Identificacion, Telefono, Correo, Contraseña, Rol } = req.body;
-            const usuarios = await Usuarios.findByIdAndUpdate(id, { Nombre, Identificacion, Telefono, Correo, Contraseña, Rol }, { new: true });
+            const { Nombre, Identificacion, Telefono, Correo, Contraseña, Rol, Imagen } = req.body;
+            const usuarios = await Usuarios.findByIdAndUpdate(id, { Nombre, Identificacion, Telefono, Correo, Contraseña, Rol, Imagen }, { new: true });
             res.json({ usuarios });
         } catch (error) {
             res.status(400).json({ error: "Error en el servidor" });
