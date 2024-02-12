@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import httpProducto from "../controllers/Producto.js"
+import helpersGeneral from "../helpers/General.js";
 import validarCampos from "../middelwares/validarcampos.js"
 
 const routers = Router();
@@ -16,22 +17,36 @@ routers.get('/Productobuscaid/:id', [
 routers.post('/productocrear', [ 
     check("Codigo", "Ingrese codigo Producto").not().isEmpty(), 
     check("Nombre", "Ingrese nombre Producto").not().isEmpty(), 
-    check("Descripcion", "Ingrese descripcion del Producto").not().isEmpty(), 
+    check("Nombre").custom(helpersGeneral.verificarEspacios), 
+
+    check("Descripcion", "Ingrese descripcion del Producto").not().isEmpty(),
+    check("Descripcion").custom(helpersGeneral.verificarEspacios),  
+
     check("UnidadMedida", "Ingrese la unidad de medida").not().isEmpty(), 
     check("PrecioUnitario", "Ingrese el precio unitario").not().isEmpty(),
     check("Iva", "Ingrese el iva del producto ").not().isEmpty(),  
-    check("Tipo", "Ingrese el Tipo").not().isEmpty(), 
+
+    check("Tipo", "Ingrese el Tipo").not().isEmpty(),
+    check("Tipo").custom(helpersGeneral.verificarEspacios),   
+    
     validarCampos
 ], httpProducto.postProductos); 
 
 routers.put('/productomodificar/:id', [ 
     check("Codigo", "Ingrese codigo Producto").not().isEmpty(), 
-    check("Nombre", "Ingrese nombre Producto").not().isEmpty(), 
-    check("Descripcion", "Ingrese descripcion del Producto").not().isEmpty(), 
+
+    check("Nombre", "Ingrese nombre Producto").not().isEmpty(),
+    check("Nombre").custom(helpersGeneral.verificarEspacios), 
+
+    check("Descripcion", "Ingrese descripcion del Producto").not().isEmpty(),
+    check("Descripcion").custom(helpersGeneral.verificarEspacios),  
+
     check("UnidadMedida", "Ingrese la unidad de medida").not().isEmpty(), 
     check("PrecioUnitario", "Ingrese el precio unitario").not().isEmpty(),
-    check("Iva", "Ingrese el iva del producto ").not().isEmpty(),  
+    check("Iva", "Ingrese el iva del producto ").not().isEmpty(),
+
     check("Tipo", "Ingrese el Tipo").not().isEmpty(), 
+    check("Tipo").custom(helpersGeneral.verificarEspacios),  
     validarCampos
   ], httpProducto.putProductos); 
 

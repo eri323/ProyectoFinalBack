@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import httpFicha from "../controllers/Ficha.js"; 
+import helpersGeneral from "../helpers/General.js";
 import validarCampos from "../middelwares/validarcampos.js"
 
 const routers = Router();
@@ -15,7 +16,10 @@ routers.get('/fichabuscaid/:id', [
 
 routers.post('/fichacrear', [ 
     check("CodigoFicha", "Ingrese codigo ficha").not().isEmpty(), 
-    check("Nombre", "Ingrese nombre ficha").not().isEmpty(), 
+
+    check("Nombre", "Ingrese nombre ficha").not().isEmpty(),
+    check("Nombre").custom(helpersGeneral.verificarEspacios), 
+
     check("NivelFormacion", "Ingrese NivelFormacion").not().isEmpty(), 
     check("FechaInicio", "Ingrese Fecha Inicio").not().isEmpty(),
     check("FechaFin", "Ingrese Fecha Fin ").not().isEmpty(),  
@@ -26,7 +30,8 @@ routers.post('/fichacrear', [
 routers.put('/fichamodificar/:id', [ 
     check("id", "Digite el id").not().isEmpty().isMongoId(),
     check("CodigoFicha", "Ingrese CodigoFicha").not().isEmpty(), 
-    check("Nombre", "Ingrese Nombre").not().isEmpty(), 
+    check("Nombre", "Ingrese Nombre").not().isEmpty(),
+    check("Nombre").custom(helpersGeneral.verificarEspacios),  
     check("NivelFormacion", "Ingrese Nivel de formacion").not().isEmpty(), 
     check("FechaInicio", "Ingrese Fecha Inicio").not().isEmpty(),
     check("FechaFin", "Ingrese Fecha Fin ").not().isEmpty(),  

@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import httpLote from "../controllers/Lote.js";
+import helpersGeneral from "../helpers/General.js";
 import validarCampos from "../middelwares/validarcampos.js"
 
 const routers = Router();
@@ -15,6 +16,7 @@ routers.get('/lotebuscaid/:id', [
 
 routers.post('/lotecrear', [
   check("Nombre", "Nombre del lote").not().isEmpty(),
+  check("Nombre").custom(helpersGeneral.verificarEspacios), 
   validarCampos
 ], httpLote.postLote);
 
@@ -22,6 +24,7 @@ routers.put('/lotemodificar/:id', [
   check("id", "Digite el id").not().isEmpty(),
   check("id", "Digite el id").isMongoId(),
   check("Nombre", "Digite el nombre").not().isEmpty(),
+  check("Nombre").custom(helpersGeneral.verificarEspacios), 
   validarCampos
 ], httpLote.putLote);
 
