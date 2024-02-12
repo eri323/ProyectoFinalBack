@@ -9,7 +9,6 @@ const UsuarioSchema = new mongoose.Schema({
     Rol: { type: String, required: true},
     createAT: { type: Date, default: Date.now },
     Estado: { type: Number, default: 1 },
-    Imagen: {Buffer, contentType: String, nombre: imagen},
 })
 
 
