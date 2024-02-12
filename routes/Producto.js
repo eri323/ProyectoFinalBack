@@ -17,17 +17,17 @@ routers.get('/Productobuscaid/:id', [
 routers.post('/productocrear', [ 
     check("Codigo", "Ingrese codigo Producto").not().isEmpty(), 
     check("Nombre", "Ingrese nombre Producto").not().isEmpty(), 
-    check("Nombre").custom(helpersGeneral.verificarEspacios), 
+    check('Nombre').custom(helpersGeneral.verificarEspacios), 
 
     check("Descripcion", "Ingrese descripcion del Producto").not().isEmpty(),
-    check("Descripcion").custom(helpersGeneral.verificarEspacios),  
+    check('Descripcion').custom(helpersGeneral.verificarEspacios),  
 
     check("UnidadMedida", "Ingrese la unidad de medida").not().isEmpty(), 
     check("PrecioUnitario", "Ingrese el precio unitario").not().isEmpty(),
     check("Iva", "Ingrese el iva del producto ").not().isEmpty(),  
 
     check("Tipo", "Ingrese el Tipo").not().isEmpty(),
-    check("Tipo").custom(helpersGeneral.verificarEspacios),   
+    check('Tipo').custom(helpersGeneral.verificarEspacios),   
     
     validarCampos
 ], httpProducto.postProductos); 
