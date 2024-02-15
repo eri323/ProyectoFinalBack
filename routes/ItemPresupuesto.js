@@ -24,8 +24,8 @@ routers.get(
 routers.post(
   "/itempresucrear",
   [
-    check("Nombre", "Nombre del área").not().isEmpty(),
-    check("Presupuesto", "Digite el nombre del presupuesto").not().isEmpty(),
+    check("Nombre", "Nombre del programa").not().isEmpty(),
+    check("Presupuesto", "Digite la cantidad del presupuesto").not().isEmpty(),
     validarCampos,
   ],
   httpItemPresupuesto.postItemPresupuesto
@@ -35,12 +35,10 @@ routers.put(
   "/itempresumodificar/:id",
   [
     check("id", "Digite el id").not().isEmpty(),
-    check("id", "Digite el id").isMongoId(),
-    check("presupuesto", "Presupuesto es requerido").not().isEmpty(),
-    check("distribucionpresupuestoid", "Distribucion presupuesto es requerido")
-      .not()
-      .isEmpty(),
-    check("fichaid", "La ficha id es requerida ").not().isEmpty().isMongoId(),
+    check("id", "No es mongo ID").isMongoId(),
+    check("Nombre", "Nombre del programa").not().isEmpty(),
+    check("Presupuesto", "Presupuesto es requerido").not().isEmpty(),
+
     validarCampos,
   ],
   httpItemPresupuesto.putItemPresupuesto

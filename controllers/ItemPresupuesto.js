@@ -39,10 +39,10 @@ const httpItemPresupuesto = {
     putItemPresupuesto: async (req, res) => {
         try {
             const { id } = req.params;
-            const { Presupuesto, DistribucionPresupuesto_id, Ficha_id } = req.body;
+            const { Nombre,Presupuesto } = req.body;
             const itempresupuesto = await ItemPresupuesto.findByIdAndUpdate(
                 id,
-                { Presupuesto, DistribucionPresupuesto_id, Ficha_id },
+                { Nombre,Presupuesto },
                 { new: true }
             );
             res.json({ itempresupuesto });
