@@ -21,8 +21,8 @@ const httpPedidos = {
 
     postPedidos: async (req, res) => {
         try {
-            const { FechaCreacion, FechaEntrega, DistribucionLoteFicha_id, Subtotal, Total} = req.body;
-            const pedidos = new Pedidos({ FechaCreacion, FechaEntrega, DistribucionLoteFicha_id, Subtotal, Total});
+            const { FechaCreacion, FechaEntrega, /* DistribucionLoteFicha_id, */ /* Subtotal, */Entregado, Usuario_Id, Ficha_Id, Total} = req.body;
+            const pedidos = new Pedidos({ FechaCreacion, FechaEntrega, /* DistribucionLoteFicha_id, */ /* Subtotal, */Entregado, Usuario_Id, Ficha_Id, Total});
             pedidos.save();
             res.json({ pedidos });
         } catch (error) {
@@ -34,8 +34,8 @@ const httpPedidos = {
     putPedidos: async (req, res) => {
         try {
             const { id } = req.params;
-            const { FechaCreacion, FechaEntrega, DistribucionLoteFicha_id, Subtotal, Total} = req.body;
-            const pedidos = await Pedidos.findByIdAndUpdate(id, { FechaCreacion, FechaEntrega, DistribucionLoteFicha_id, Subtotal, Total}, { new: true });
+            const { FechaCreacion, FechaEntrega, /* DistribucionLoteFicha_id, */ /* Subtotal, */ Entregado, Usuario_Id, Ficha_Id, Total} = req.body;
+            const pedidos = await Pedidos.findByIdAndUpdate(id, { FechaCreacion, FechaEntrega, /* DistribucionLoteFicha_id, */ /* Subtotal, */ Entregado, Usuario_Id, Ficha_Id, Total}, { new: true });
             res.json({ pedidos });
         } catch (error) {
             res.status(400).json({ error: "Error en el servidor" });

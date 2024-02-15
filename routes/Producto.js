@@ -26,8 +26,9 @@ routers.post('/productocrear', [
     check("PrecioUnitario", "Ingrese el precio unitario").not().isEmpty(),
     check("Iva", "Ingrese el iva del producto ").not().isEmpty(),  
 
-    check("Tipo", "Ingrese el Tipo").not().isEmpty(),
-    check('Tipo').custom(helpersGeneral.verificarEspacios),   
+    check("Consumible", "¿Es consumible o no?").not().isEmpty(),
+    check("Lote_Id", "Ingrese el lote").not().isEmpty(),
+   /*  check('Consumible').custom(helpersGeneral.verificarEspacios),  */  
     
     validarCampos
 ], httpProducto.postProductos); 
@@ -45,8 +46,8 @@ routers.put('/productomodificar/:id', [
     check("PrecioUnitario", "Ingrese el precio unitario").not().isEmpty(),
     check("Iva", "Ingrese el iva del producto ").not().isEmpty(),
 
-    check("Tipo", "Ingrese el Tipo").not().isEmpty(), 
-    check("Tipo").custom(helpersGeneral.verificarEspacios),  
+    check("Consumible", "¿Es consumible o no?").not().isEmpty(),
+    check("Lote_id", "Ingrese el lote").not().isEmpty(),
     validarCampos
   ], httpProducto.putProductos); 
 

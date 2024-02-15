@@ -1,3 +1,4 @@
+import { Decimal128 } from "mongodb";
 import mongoose from "mongoose";
 
 const ProductoSchema = new mongoose.Schema({
@@ -6,10 +7,15 @@ const ProductoSchema = new mongoose.Schema({
     Descripcion: { type: String, required: true },
     UnidadMedida: { type: String, required: true},
     PrecioUnitario: { type: Number, required: true},
-    Iva: {type: String, required: true},
-    Tipo: { type: String, required: true},
+    Iva: {type: Number, required: true},
+    Consumible: { type: Boolean, required: true},
     createAT: { type: Date, default: Date.now },
     Estado: { type: Number, default: 1 },
+    Lote_Id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Lote",
+        required: true,
+    },
 })
 
 export default mongoose.model("Producto", ProductoSchema)

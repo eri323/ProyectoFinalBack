@@ -24,8 +24,8 @@ const httpDetallePedido = {
 
     postDetallePedido: async (req, res) => {
         try {
-            const { Cantidad, Pedido_id, Producto_id } = req.body;
-            const detallePedido = new DetallePedido({ Cantidad, Pedido_id, Producto_id });
+            const { Cantidad, Pedido_id, SubTotal, Producto_id } = req.body;
+            const detallePedido = new DetallePedido({ Cantidad, Pedido_id, SubTotal, Producto_id });
             detallePedido.save();
             res.json({ detallePedido });
         } catch (error) {
@@ -36,8 +36,8 @@ const httpDetallePedido = {
     putEditarDetallePedido: async (req, res) => {
         try {
             const { id } = req.params;
-            const { Cantidad, Pedido_id, Producto_id } = req.body;
-            const detallePedido = await DetallePedido.findByIdAndUpdate(id, { Cantidad, Pedido_id, Producto_id }, { new: true });
+            const { Cantidad, Pedido_id, SubTotal,Producto_id } = req.body;
+            const detallePedido = await DetallePedido.findByIdAndUpdate(id, { Cantidad, Pedido_id, SubTotal, Producto_id }, { new: true });
             res.json({ detallePedido });
         } catch (error) {
             res.status(400).json({ error });
