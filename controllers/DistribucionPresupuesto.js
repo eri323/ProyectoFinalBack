@@ -5,7 +5,7 @@ const httpDistribucionPresupuesto = {
 
     getDistribucionPresupuesto: async (req, res) => {
         try {
-            const distribucionpresupuesto = await DistribucionPresupuesto.find();
+            const distribucionpresupuesto = await DistribucionPresupuesto.find().populate("Lote_Id").populate("ItemPresupuesto_Id");
             res.json({ distribucionpresupuesto });
         } catch (error) {
             res.status(400).json({ error });
