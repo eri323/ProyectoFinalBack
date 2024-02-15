@@ -21,8 +21,8 @@ const httpLote = {
 
   postLote: async (req, res) => {
     try {
-      const { Nombre, Presupuesto } = req.body;
-      const lote = new Lote({ Nombre, Presupuesto });
+      const { Nombre } = req.body;
+      const lote = new Lote({ Nombre });
       lote.save();
       res.json({ lote });
     } catch (error) {
@@ -33,10 +33,10 @@ const httpLote = {
   putLote: async (req, res) => {
     try {
       const { id } = req.params;
-      const { Nombre, Presupuesto } = req.body;
+      const { Nombre } = req.body;
       const lote = await Lote.findByIdAndUpdate(
         id,
-        { Nombre, Presupuesto },
+        { Nombre },
         { new: true }
       );
       res.json({ lote });
