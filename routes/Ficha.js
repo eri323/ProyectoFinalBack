@@ -3,6 +3,7 @@ import { check } from "express-validator";
 import httpFicha from "../controllers/Ficha.js"; 
 import helpersGeneral from "../helpers/General.js";
 import validarCampos from "../middelwares/validarcampos.js"
+import helpersFicha from "../helpers/Ficha.js";
 
 const routers = Router();
 
@@ -16,7 +17,7 @@ routers.get('/fichabuscaid/:id', [
 
 routers.post('/fichacrear', [ 
     check("CodigoFicha", "Ingrese codigo ficha").not().isEmpty(), 
-
+    check("CodigoFicha").custom(helpersFicha.validarFichaUnica), 
     check("Nombre", "Ingrese nombre ficha").not().isEmpty(),
     check("Nombre").custom(helpersGeneral.verificarEspacios), 
 
@@ -30,6 +31,10 @@ routers.post('/fichacrear', [
 routers.put('/fichamodificar/:id', [ 
     check("id", "Digite el id").not().isEmpty().isMongoId(),
     check("CodigoFicha", "Ingrese CodigoFicha").not().isEmpty(), 
+    check('CodigoFicha').custom((value, { req }) => {
+        const { id } = req.params;
+        return helpersFicha.validarFichaUnicaEditar(id, value);
+    }),
     check("Nombre", "Ingrese Nombre").not().isEmpty(),
     check("Nombre").custom(helpersGeneral.verificarEspacios),  
     check("NivelFormacion", "Ingrese Nivel de formacion").not().isEmpty(), 
