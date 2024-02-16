@@ -9,13 +9,13 @@ routers.get('/dispresupuestobusca', [validarCampos], httpDistribucionPresupuesto
 
 routers.get('/dispresupuestobuscaid/:id', [ 
     check("id", "Digite el id").not().isEmpty(),
-    check("id", "Digite el id").isMongoId(),
+    check("id", "No es mongo Id").isMongoId(),
     validarCampos
 ], httpDistribucionPresupuesto.getDistribucionPresupuestoId); 
 
 routers.post('/dispresupuestocrear', [ 
     check("Presupuesto", "Indique un presupuesto").not().isEmpty(), 
-    check("Lote_id", "Se necesita el lote presupuesto").not().isEmpty(), 
+    check("Lote_id", "Se necesita el lote").not().isEmpty(), 
     check("ItemPresupuesto_id", "Se necesita el ItemPresupuesto_id").not().isEmpty(), 
     validarCampos
   ], httpDistribucionPresupuesto.postDistribucionPresupuesto); 
