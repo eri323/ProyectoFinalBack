@@ -25,7 +25,6 @@ routers.post('/productocrear', [
     check("UnidadMedida", "Ingrese la unidad de medida").not().isEmpty(), 
     check("PrecioUnitario", "Ingrese el precio unitario").not().isEmpty(),
     check("Iva", "Ingrese el iva del producto ").not().isEmpty(),  
-
     check("Consumible", "¿Es consumible o no?").not().isEmpty(),
     check("Lote_Id", "Ingrese el lote").not().isEmpty(),
    /*  check('Consumible').custom(helpersGeneral.verificarEspacios),  */  
