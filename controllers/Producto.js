@@ -1,9 +1,10 @@
 import Productos from "../models/Producto.js";
+import Lote from '../models/Lote.js';
 
 const httpProductos = {
     getProductos: async (req, res) => {
         try {
-            const productos = await Productos.find();
+            const productos = await Productos.find().populate("Lote_Id");
             res.json({ productos });
         } catch (error) {
             res.status(400).json({ error });
@@ -24,6 +25,9 @@ const httpProductos = {
             const { Codigo, Nombre, Descripcion, UnidadMedida, PrecioUnitario, Iva, Lote_Id, Consumible } = req.body;
             const productos = new Productos({ Codigo, Nombre, Descripcion, UnidadMedida, PrecioUnitario, Iva, Lote_Id,Consumible });
             productos.save();
+
+            const lote = await Lote.findById(Lote_Id);
+            productos.Lote_Id = lote
             res.json({ productos });
         } catch (error) {
             res.status(400).json({ error });
@@ -37,6 +41,9 @@ const httpProductos = {
             const { Codigo, Nombre, Descripcion, UnidadMedida, PrecioUnitario, Iva, Lote_Id,Consumible } = req.body;
             const productos = await Productos.findByIdAndUpdate(id, { Codigo, Nombre, Descripcion, UnidadMedida, PrecioUnitario, Iva, Lote_Id,Consumible }, { new: true });
             res.json({ productos });
+
+            const lote = await Lote.findById(Lote_Id);
+            productos.Lote_Id = lote
         } catch (error) {
             res.status(400).json({ error: "Error en el servidor" });
         }
