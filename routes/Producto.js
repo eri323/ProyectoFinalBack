@@ -47,7 +47,7 @@ routers.put('/productomodificar/:id', [
     check("Iva", "Ingrese el iva del producto ").not().isEmpty(),
 
     check("Consumible", "¿Es consumible o no?").not().isEmpty(),
-    check("Lote_id", "Ingrese el lote").not().isEmpty(),
+    check("Lote_Id", "Ingrese el lote").not().isEmpty(),
     validarCampos
   ], httpProducto.putProductos); 
 
