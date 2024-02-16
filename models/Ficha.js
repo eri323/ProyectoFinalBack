@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
+import types from "mongoose"
 const FichaSchema = new mongoose.Schema({
   CodigoFicha: { type: Number, required: true },
   Nombre: { type: String, required: true },
-  NivelFormacion: { type: String, required: true },
+  NivelFormacion: {  type: types.Mixed, required: true },
   FechaInicio: { type: Date, required: true },
   FechaFin: { type: Date, required: true },
   createAT: { type: Date, default: Date.now },
