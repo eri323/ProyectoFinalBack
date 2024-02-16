@@ -1,6 +1,7 @@
 import Usuarios from "../models/Usuarios.js";
 import { generarJWT } from "../middelwares/validar-jwt.js";
 import bcryptjs from "bcrypt"
+import nodemailer from "nodemailer"
 
 const httpUsuarios = {
     getUsuarios: async (req, res) => {
@@ -108,6 +109,55 @@ const httpUsuarios = {
             })
         }
     },
+
+    recuperarPassword: async (req, res) => {
+    try {
+      const { Correo } = req.body;
+
+      const usuario = await Usuarios.findOne({ Correo });
+
+      if (!usuario)
+        return res.status(404).json({ error: "Usuario no encontrado" });
+
+      const token = await generarJWT(usuario.id);
+
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: process.env.userEmail,
+          pass: process.env.password,
+        },
+      });
+
+      const mailOptions = {
+        from: process.env.userEmail,
+        to: Correo,
+        subject: "Recuperación de Contraseña",
+        Text:
+          "Haz clic en el siguiente enlace para restablecer tu contraseña: recuperarcontraseña.com" +
+          token,
+      };
+
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.error(error);
+          res.status(500).json({
+            success: false,
+            msg: "Error al enviar el Correo electrónico.",
+          });
+        } else {
+          console.log("Correo electrónico enviado: " + info.response);
+          res.json({
+            success: true,
+            msg: "Correo electrónico enviado con éxito.",
+          });
+        }
+      });
+    } catch (error) {
+        console.log(error);
+      res.status(500).json({ error });
+    }
+  },
 
 };
 

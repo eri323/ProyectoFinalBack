@@ -17,6 +17,7 @@ routers.get('/usuariobuscaid/:id', [
 
 
 routers.post('/login', [validarCampos],httpUsuario.login)
+routers.post("/recuperar-password", httpUsuario.recuperarPassword);
 
 
 routers.post('/usuariocrear', [ 
