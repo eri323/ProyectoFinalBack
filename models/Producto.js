@@ -8,7 +8,7 @@ const ProductoSchema = new mongoose.Schema({
     UnidadMedida: { type: String, required: true},
     PrecioUnitario: { type: Number, required: true},
     Iva: {type: Number, required: true},
-    Consumible: { type: Boolean, required: true},
+    Consumible: { type: String, required: true},
     createAT: { type: Date, default: Date.now },
     Estado: { type: Number, default: 1 },
     Lote_Id: {
