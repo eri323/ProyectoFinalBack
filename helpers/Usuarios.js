@@ -10,6 +10,15 @@ const helpersUsuario = {
 
         req.req.UsuarioUpdate = existe
     },
+    existeCorreo: async (correo, req) => {
+        const existe = await Usuario.findOne({correo})
+
+        if (!existe) {
+            throw new Error(`El correo no existe`)
+        }
+
+        req.req.UsuarioUpdate = existe
+    },
     validarPassword: async (password, req) => {
         const vali = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d.*\d)(?=.*[@#$%^&+=!]).{8,}$/;
         if (!vali.test(password)) {

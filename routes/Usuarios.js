@@ -18,7 +18,11 @@ routers.get('/usuariobuscaid/:id', [
 
 routers.post('/login', [validarCampos],httpUsuario.login)
 routers.post("/recuperar-password", httpUsuario.recuperarPassword);
-
+routers.post("/confirmarcodigo/:codigo", httpUsuario.confirmarCodigo );
+routers.put("/nuevaPassword", [
+    check('Correo').custom(hpusuarios.existeCorreo),
+    validarCampos
+], httpUsuario.nuevaPassword)
 
 routers.post('/usuariocrear', [ 
     check("Nombre", "Ingrese nombre Usuario").not().isEmpty(),
