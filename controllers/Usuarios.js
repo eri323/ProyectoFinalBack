@@ -145,7 +145,7 @@ const httpUsuarios = {
         to: Correo,
         subject: "Recuperación de Contraseña",
         Text:
-          "Haz clic en el siguiente enlace para restablecer tu contraseña: xvideos.com" +
+          "Su codigo es este: " +
           codigo,
       };
 
