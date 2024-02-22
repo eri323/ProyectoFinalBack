@@ -38,7 +38,10 @@ routers.put(
   "/areamodificar/:id",
   [
     check("Nombre", "Nombre del área").not().isEmpty(),
-    check("Nombre").custom(helpersArea.validarAreaUnicaEditar),
+    check("Nombre", "Nombre ya registrado").custom((value, { req }) => {
+      const { id } = req.params;
+      return helpersArea.validarAreaUnicaEditar(id, value);
+    }),
     check("Nombre").custom(helpersGeneral.verificarEspacios),
     check("id", "Digite el id").not().isEmpty(),
     check("id", "No es mongo el id").isMongoId(),

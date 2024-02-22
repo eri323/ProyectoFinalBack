@@ -67,7 +67,7 @@ const helpersUsuario = {
         req.req.UsuarioUpdate = existe;
     },
     validarPassword: async (password, req) => {
-    const vali = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d.*\d)(?=.*[@#$%^&+=!*/_-.:,;{}]).{8,}$/;
+    const vali = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d.*\d)(?=.*[@#$%^&+=!*/_-{}().:,;]).{8,}$/;
         if (!vali.test(password)) {
             throw new Error("La contraseña no cumple con los requisitos, debe contener una letra mayuscula, una minuscula, un carcater especial y contener minimo 8 caracteres.");
         }
