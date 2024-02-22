@@ -17,11 +17,13 @@ routers.get('/dispresupuestobuscaid/:id', [
 
 routers.post('/dispresupuestocrear', [
     check("Presupuesto", "Indique un presupuesto").not().isEmpty(),
-    check("Presupuesto", "El presupuesto debe ser mayor a 0").custom(helpersPresupuesto.validarPresupuesto),
+    // check("Presupuesto", "El presupuesto debe ser mayor a 0").custom(helpersPresupuesto.validarPresupuesto),
+    // check("Presupuesto").custom(helpersPresupuesto.obtenerDistribucionPresupuestoPorId),
     check("Lote_id", "Se necesita el lote").not().isEmpty(),
     check("Lote_id", "No es Mongo Id").isMongoId(),
     check("ItemPresupuesto_id", "Se necesita el ItemPresupuesto_id").not().isEmpty(),
     check("ItemPresupuesto_id", "No es Mongo Id").isMongoId(),
+    check("ItemPresupuesto_id", "No es Mongo Id").custom(helpersPresupuesto.obtenerDistribucionPresupuestoPorId),
     check("ItemPresupuesto_id").custom(helpersDisPresupuesto.validarDisPreUnica),
     validarCampos
 ], httpDistribucionPresupuesto.postDistribucionPresupuesto);
@@ -31,6 +33,7 @@ routers.put('/dispresupuestomodificar/:id', [
     check("id", "No es Mongo Id").isMongoId(),
     check("Presupuesto", "Indique un presupuesto").not().isEmpty(),
     check("Presupuesto").custom(helpersPresupuesto.validarPresupuesto),
+    check("Presupuesto").custom(helpersPresupuesto.obtenerDistribucionPresupuestoPorId),
     check("Lote_id", "Se necesita el lote").not().isEmpty(),
     check("Lote_id", "No es Mongo Id").isMongoId(),
     check("ItemPresupuesto_id", "Se necesita el ItemPresupuesto_id").not().isEmpty(),

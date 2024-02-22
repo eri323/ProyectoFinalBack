@@ -1,6 +1,7 @@
 /* DistribucionPresupuesto */
 import DistribucionPresupuesto from "../models/DistribucionPresupuesto.js"
 import ItemPresupuesto from "../models/ItemPresupuesto.js"
+import DisLoteFicha from "../models/DistribucionLoteFicha.js"
 import Lote from "../models/Lote.js"
 
 const httpDistribucionPresupuesto = {
@@ -40,7 +41,7 @@ const httpDistribucionPresupuesto = {
         try {
             const { Presupuesto, Lote_id, ItemPresupuesto_id } = req.body;
             const distribucion = new DistribucionPresupuesto(
-                { Presupuesto, presupuestoDisponible: Presupuesto, Lote_id, ItemPresupuesto_id });
+                { Presupuesto, PresupuestoDisponible: Presupuesto, Lote_id, ItemPresupuesto_id });
 
             const lote = await Lote.findById(distribucion.Lote_id);
             distribucion.Lote_id = lote;
@@ -79,6 +80,17 @@ const httpDistribucionPresupuesto = {
         try {
             const { id } = req.params;
             const { Presupuesto, Lote_id, ItemPresupuesto_id } = req.body;
+
+            const disLoteFicha = await DisLoteFicha.find({
+                idDistribucionPresupuesto: id
+            });
+
+            const totalPresupuestos = disLoteFicha.reduce((total, disLoteFicha) => {
+                return total + disLoteFicha.Presupuesto;
+            }, 0);
+
+            const presupuestoDisponible = Presupuesto - totalPresupuestos;
+
             const distribucionpresupuesto = await DistribucionPresupuesto.findByIdAndUpdate(
                 id,
                 { Presupuesto, Lote_id, ItemPresupuesto_id },
