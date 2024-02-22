@@ -1,13 +1,13 @@
-import DistribucionPresupuesto from "../models/DistribucionPresupuesto.js.js";
+import DistribucionPresupuesto from "../models/DistribucionPresupuesto.js";
 
 const helpersDisPresupuesto = {
-    validarDisPreUnica: async ( idItem, req) => {
+    validarDisPreUnica: async ( ItemPresupuesto_id, req) => {
         try {
-            const idLote = req.req.body.idLote;
+            const Lote_id = req.req.body.Lote_id;
 
             const existe = await DistribucionPresupuesto.findOne({ 
-                idItem: idItem,
-                idLote: idLote,
+                ItemPresupuesto_id: ItemPresupuesto_id,
+                Lote_id: Lote_id,
             });
         
             if (existe) {
