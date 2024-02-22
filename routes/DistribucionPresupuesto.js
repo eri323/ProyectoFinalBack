@@ -30,7 +30,7 @@ routers.put('/dispresupuestomodificar/:id', [
     check("id", "Digite el id").not().isEmpty(),
     check("id", "No es Mongo Id").isMongoId(),
     check("Presupuesto", "Indique un presupuesto").not().isEmpty(),
-    check("Presupuesto", "El presupuesto debe ser mayor a 0").custom(helpersPresupuesto.validarPresupuesto),
+    check("Presupuesto").custom(helpersPresupuesto.validarPresupuesto),
     check("Lote_id", "Se necesita el lote").not().isEmpty(),
     check("Lote_id", "No es Mongo Id").isMongoId(),
     check("ItemPresupuesto_id", "Se necesita el ItemPresupuesto_id").not().isEmpty(),

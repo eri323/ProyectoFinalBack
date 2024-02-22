@@ -2,7 +2,7 @@ import { Router } from "express";
 import { check } from "express-validator";
 import httpItemPresupuesto from "../controllers/ItemPresupuesto.js";
 import validarCampos from "../middelwares/validarcampos.js";
-
+import helpersPresupuesto from "../helpers/Presupuesto.js";
 const routers = Router();
 
 routers.get(
@@ -26,6 +26,7 @@ routers.post(
   [
     check("Nombre", "Nombre del programa").not().isEmpty(),
     check("Presupuesto", "Digite la cantidad del presupuesto").not().isEmpty(),
+    check("Presupuesto").not().isEmpty(),
     validarCampos,
   ],
   httpItemPresupuesto.postItemPresupuesto

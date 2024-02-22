@@ -17,7 +17,7 @@ routers.get(
   "/areabuscaid/:id",
   [
     check("id", "Digite el id").not().isEmpty(),
-    check("id", "Digite el id").isMongoId(),
+    check("id", "No es MOngo ID").isMongoId(),
     validarCampos,
   ],
   httpArea.getAreaId

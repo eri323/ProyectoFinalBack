@@ -3,6 +3,7 @@ import { check } from "express-validator";
 import httpProducto from "../controllers/Producto.js"
 import helpersGeneral from "../helpers/General.js";
 import validarCampos from "../middelwares/validarcampos.js"
+import helpersProducto from "../helpers/Producto.js";
 
 const routers = Router();
 
@@ -16,6 +17,7 @@ routers.get('/Productobuscaid/:id', [
 
 routers.post('/productocrear', [ 
     check("Codigo", "Ingrese codigo Producto").not().isEmpty(), 
+    check("Codigo").custom(helpersProducto.existeCodigo), 
     check("Nombre", "Ingrese nombre Producto").not().isEmpty(), 
     check('Nombre').custom(helpersGeneral.verificarEspacios), 
 
@@ -24,6 +26,7 @@ routers.post('/productocrear', [
 
     check("UnidadMedida", "Ingrese la unidad de medida").not().isEmpty(), 
     check("PrecioUnitario", "Ingrese el precio unitario").not().isEmpty(),
+    check("PrecioUnitario").custom(helpersProducto.precioValido),
     check("Iva", "Ingrese el iva del producto ").not().isEmpty(),  
     check("Consumible", "¿Es consumible o no?").not().isEmpty(),
     check("Lote_Id", "Ingrese el lote").not().isEmpty(),
@@ -43,6 +46,7 @@ routers.put('/productomodificar/:id', [
 
     check("UnidadMedida", "Ingrese la unidad de medida").not().isEmpty(), 
     check("PrecioUnitario", "Ingrese el precio unitario").not().isEmpty(),
+    check("PrecioUnitario").custom(helpersProducto.precioValido),
     check("Iva", "Ingrese el iva del producto ").not().isEmpty(),
 
     check("Consumible", "¿Es consumible o no?").not().isEmpty(),
