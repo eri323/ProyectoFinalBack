@@ -39,7 +39,7 @@ const httpProductos = {
         Iva,
         Lote_Id,
         Consumible,
-        ImagenUrl,
+     /*    ImagenUrl, */
       } = req.body;
       const cloudinaryResult = await cloudinary.uploader.upload(Imagen.path);
       const imagenUrl = cloudinaryResult.secure_url;
@@ -53,7 +53,7 @@ const httpProductos = {
         Iva,
         Lote_Id,
         Consumible,
-        ImagenUrl: imagenUrl
+        /* ImagenUrl: imagenUrl */
       });
       productos.save();
 

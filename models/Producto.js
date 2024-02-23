@@ -10,7 +10,7 @@ const ProductoSchema = new mongoose.Schema({
     PrecioUnitario: { type: Number, required: true},
     Iva: {type: Number, required: true},
     Consumible: { type: types.Mixed, required: true},
-    ImagenUrl: { type: String },
+    /* ImagenUrl: { type: String }, */
     createAT: { type: Date, default: Date.now },
     Estado: { type: Number, default: 1 },
     Lote_Id: {
