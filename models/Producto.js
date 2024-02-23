@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import types from "mongoose"
 
 const ProductoSchema = new mongoose.Schema({
-    Codigo: { type: Number, required: true },
+    Codigo: { type: Number, index: 'text', required: true, unique: true },
     Nombre: { type: String, required: true },
     Descripcion: { type: String, required: true },
     UnidadMedida: { type: String, required: true},

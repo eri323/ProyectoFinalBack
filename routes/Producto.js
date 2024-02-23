@@ -17,7 +17,7 @@ routers.get('/Productobuscaid/:id', [
 
 routers.post('/productocrear', [ 
     check("Codigo", "Ingrese codigo Producto").not().isEmpty(), 
-    check("Codigo").custom(helpersProducto.existeCodigo), 
+    check('Codigo').custom(helpersProducto.existeCodigo), 
     check("Nombre", "Ingrese nombre Producto").not().isEmpty(), 
     check('Nombre').custom(helpersGeneral.verificarEspacios), 
 
