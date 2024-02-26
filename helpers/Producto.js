@@ -8,7 +8,7 @@ const helpersProducto = {
     },
 
     existeCodigo: async (Codigo, req) => {
-        const existe = await Producto.findOne({ $text: { $search: Codigo } });
+        const existe = await Producto.findOne({ Codigo  });
 
         if (existe) {
             if (req.req.method === "PUT" && req.req.body._id != existe._id) {
