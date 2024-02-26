@@ -41,8 +41,8 @@ const httpProductos = {
         Consumible,
      /*    ImagenUrl, */
       } = req.body;
-      const cloudinaryResult = await cloudinary.uploader.upload(Imagen.path);
-      const imagenUrl = cloudinaryResult.secure_url;
+      /* const cloudinaryResult = await cloudinary.uploader.upload(Imagen.path);
+      const imagenUrl = cloudinaryResult.secure_url; */
 
       const productos = new Productos({
         Codigo,
