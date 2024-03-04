@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import httpArea from "../controllers/Area.js";
+import httpArea from "../controllers/Dependencia.js";
 import helpersGeneral from "../helpers/General.js";
 import validarCampos from "../middelwares/validarcampos.js";
-import helpersArea from "../helpers/Area.js";
+import helpersArea from "../helpers/Dependencia.js";
 const routers = Router();
 
 routers.get(

@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import "dotenv/config"
-import Area from "./routes/Area.js"
+import Area from "./routes/Dependecia.js"
 import DetallePedido from "./routes/DetallePedido.js";
 import DistribucionLoteFicha from "./routes/DistribucionLoteFicha.js";
 import DistribucionPresupuesto from "./routes/DistribucionPresupuesto.js";
