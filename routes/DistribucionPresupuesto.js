@@ -15,15 +15,20 @@ routers.get('/dispresupuestobuscaid/:id', [
     validarCampos
 ], httpDistribucionPresupuesto.getDistribucionPresupuestoId);
 
+routers.get('/distribucion/:ItemPresupuesto_id',[
+    check('ItemPresupuesto_id','Digite el id de la distribucion').not().isEmpty(),
+    check('ItemPresupuesto_id','Digite el id de la distribucion').isMongoId(),
+    validarCampos
+],httpDistribucionPresupuesto.getDistribucionesById)
+
 routers.post('/dispresupuestocrear', [
     check("Presupuesto", "Indique un presupuesto").not().isEmpty(),
-    // check("Presupuesto", "El presupuesto debe ser mayor a 0").custom(helpersPresupuesto.validarPresupuesto),
+    check("Presupuesto", "El presupuesto debe ser mayor a 0").custom(helpersPresupuesto.validarPresupuesto),
     // check("Presupuesto").custom(helpersPresupuesto.obtenerDistribucionPresupuestoPorId),
     check("Lote_id", "Se necesita el lote").not().isEmpty(),
     check("Lote_id", "No es Mongo Id").isMongoId(),
     check("ItemPresupuesto_id", "Se necesita el ItemPresupuesto_id").not().isEmpty(),
     check("ItemPresupuesto_id", "No es Mongo Id").isMongoId(),
-    check("ItemPresupuesto_id", "No es Mongo Id").custom(helpersPresupuesto.obtenerDistribucionPresupuestoPorId),
     check("ItemPresupuesto_id").custom(helpersDisPresupuesto.validarDisPreUnica),
     validarCampos
 ], httpDistribucionPresupuesto.postDistribucionPresupuesto);
@@ -32,8 +37,7 @@ routers.put('/dispresupuestomodificar/:id', [
     check("id", "Digite el id").not().isEmpty(),
     check("id", "No es Mongo Id").isMongoId(),
     check("Presupuesto", "Indique un presupuesto").not().isEmpty(),
-    check("Presupuesto").custom(helpersPresupuesto.validarPresupuesto),
-    check("Presupuesto").custom(helpersPresupuesto.obtenerDistribucionPresupuestoPorId),
+    check("Presupuesto", "debe edg mayor a o").custom(helpersPresupuesto.validarPresupuesto),
     check("Lote_id", "Se necesita el lote").not().isEmpty(),
     check("Lote_id", "No es Mongo Id").isMongoId(),
     check("ItemPresupuesto_id", "Se necesita el ItemPresupuesto_id").not().isEmpty(),

@@ -4,7 +4,10 @@ const httpDetallePedido = {
 
     getDetallePedido: async (req, res) => {
         try {
-            const detallePedido = await DetallePedido.find().populate("Producto_id").populate("Pedido_id");
+            const detallePedido = await DetallePedido.find()
+            .populate("Producto_id")
+            .populate("Pedido_id");
+            
             res.json({ detallePedido })
         } catch (error) {
             res.status(400).json({ error })
@@ -12,6 +15,34 @@ const httpDetallePedido = {
     },
 
     getDetallePedidoId: async (req, res) => {
+        try {
+          const { id } = req.params;
+          const detallePedido = await DetallePedido.findById({ id })
+          .populate("Producto_id")
+          .populate("Pedido_id");
+    
+          res.json(detallePedido);
+        } catch (error) {
+          res.status(400).json({ error });
+        }
+      },
+
+
+      getByPedido: async (req, res) => {
+        try {
+          const { Pedido_id } = req.params;
+          const pedidos = await DetallePedido.find({ Pedido_id })
+          .populate("Producto_id")
+          .populate("Pedido_id");
+          res.json(pedidos);
+        } catch (error) {
+          res.status(500).json({ error });
+        }
+      },
+
+
+
+    /* getDetallePedidoId: async (req, res) => {
         const { id } = req.params
         try {
             const detallePedido = await DetallePedido.findById(id)
@@ -20,7 +51,7 @@ const httpDetallePedido = {
         } catch (error) {
             res.status(400).json({ error })
         }
-    },
+    }, */
 
     postDetallePedido: async (req, res) => {
         try {
@@ -36,7 +67,7 @@ const httpDetallePedido = {
     putEditarDetallePedido: async (req, res) => {
         try {
             const { id } = req.params;
-            const { Cantidad, Pedido_id, SubTotal,Producto_id } = req.body;
+            const { Cantidad, Pedido_id, SubTotal, Producto_id } = req.body;
             const detallePedido = await DetallePedido.findByIdAndUpdate(id, { Cantidad, Pedido_id, SubTotal, Producto_id }, { new: true });
             res.json({ detallePedido });
         } catch (error) {

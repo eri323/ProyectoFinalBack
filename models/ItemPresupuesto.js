@@ -1,9 +1,10 @@
-import { Decimal128 } from "mongodb";
+
 import mongoose from "mongoose";
 
 const ItemPresupuestoSchema = new mongoose.Schema({
-    Nombre: { type: String, required: true },
+    Nombre: { type: String, index: "text", require:true, unique: true},
     Presupuesto: { type: Number, required: true},
+    presupuestoDisponible: {type:Number, require:true},
     Estado: { type: Number, default: 1 },
     createAT: { type: Date, default: Date.now },
 })

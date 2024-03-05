@@ -16,6 +16,13 @@ routers.get('/detallepedidobuscaid/:id', [
   validarCampos
 ], httpDetallePedido.getDetallePedidoId);
 
+routers.get("/getPorPedido/:Pedido_id", [
+  check("Pedido_id", "Ingrese el pedido").not().isEmpty(),
+  check("Pedido_id", "Id de pedido no válida").isMongoId(),
+  check("Pedido_id").custom(helpersPedido.existeId),
+  validarCampos,
+], httpDetallePedido.getByPedido);
+
 routers.post('/detallepedidocrear', [
   check("Cantidad", "Cual es la cantidad").not().isEmpty(),
   check("SubTotal", "Cual es el subtotal").not().isEmpty(),

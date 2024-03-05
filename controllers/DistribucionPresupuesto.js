@@ -8,17 +8,35 @@ const httpDistribucionPresupuesto = {
 
     getDistribucionPresupuesto: async (req, res) => {
         try {
-            const distribucionpresupuesto = await DistribucionPresupuesto.find().populate("Lote_id").populate("ItemPresupuesto_id");
+            const distribucionpresupuesto = await DistribucionPresupuesto.find()
+                .populate("Lote_id")
+                .populate("ItemPresupuesto_id");
             res.json({ distribucionpresupuesto });
         } catch (error) {
             res.status(400).json({ error });
         }
     },
 
-    getDistribucionPresupuestoId: async (req, res) => {
-        const { id } = req.params;
+    getDistribucionesById: async (req, res) => {
         try {
-            const distribucionpresupuesto = await DistribucionPresupuesto.findById(id);
+            const { ItemPresupuesto_id } = req.params;
+            const distribucionpresupuesto = await DistribucionPresupuesto.find({ ItemPresupuesto_id })
+                .populate("Lote_id")
+                .populate("ItemPresupuesto_id");
+            res.json(distribucionpresupuesto)
+        } catch (error) {
+            res.status(400).json({ error });
+
+        }
+    },
+
+    getDistribucionPresupuestoId: async (req, res) => {
+        try {
+            const { id } = req.params;
+
+            const distribucionpresupuesto = await DistribucionPresupuesto.findById(id)
+                .populate("Lote_id")
+                .populate("ItemPresupuesto_id");
             res.json({ distribucionpresupuesto });
         } catch (error) {
             res.status(400).json({ error });
@@ -82,7 +100,7 @@ const httpDistribucionPresupuesto = {
             const { Presupuesto, Lote_id, ItemPresupuesto_id } = req.body;
 
             const disLoteFicha = await DisLoteFicha.find({
-                idDistribucionPresupuesto: id
+                DistribucionPresupuesto_id: id
             });
 
             const totalPresupuestos = disLoteFicha.reduce((total, disLoteFicha) => {
@@ -93,7 +111,7 @@ const httpDistribucionPresupuesto = {
 
             const distribucionpresupuesto = await DistribucionPresupuesto.findByIdAndUpdate(
                 id,
-                { Presupuesto, Lote_id, ItemPresupuesto_id },
+                { Presupuesto,presupuestoDisponible, Lote_id, ItemPresupuesto_id },
                 { new: true }
             ).populate("Lote_id").populate("ItemPresupuesto_id");
             res.json(distribucionpresupuesto);

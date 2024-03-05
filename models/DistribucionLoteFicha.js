@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 const DistribucionLoteFichaSchema = new mongoose.Schema({
     Presupuesto: { type: Number, required: true },
+    presupuestoDisponible: { type:Number, require:true},
     createAT: { type: Date, default: Date.now },
     Estado: { type: Number, default: 1 },
     DistribucionPresupuesto_id: { type: mongoose.Schema.Types.ObjectId, ref: 'DistribucionPresupuesto', required: true },
