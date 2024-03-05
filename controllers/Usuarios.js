@@ -138,15 +138,16 @@ const httpUsuarios = {
           pass: process.env.password,
         },
       });
+   
 
+      
       const  codigo = generarNumeroAleatorio()
       const mailOptions = {
         from: process.env.userEmail,
         to: Correo,
         subject: "Recuperación de Contraseña",
-        Text:
-          "Su codigo es este: " +
-          codigo,
+        text:
+          "Su codigo es este: " + codigo, 
       };
 
       transporter.sendMail(mailOptions, (error, info) => {
@@ -206,7 +207,7 @@ const httpUsuarios = {
 
 nuevaPassword: async (req, res) => {
     try {
-      const { codigo, password } = req.body;
+      const { Correo, codigo, Contraseña } = req.body;
 
       const { codigo: codigoGuardado, fechaCreacion } = codigoEnviado;
       const tiempoExpiracion = 30; // Tiempo de expiración en minutos
@@ -222,14 +223,14 @@ nuevaPassword: async (req, res) => {
       if (codigo === codigoGuardado) {
         codigoEnviado = {};
 
-        const usuario = req.UsuarioUpdate;
+        const usuario = Usuarios.findOne({Correo});
 
         const salt = bcryptjs.genSaltSync();
-        const newPassword = bcryptjs.hashSync(password, salt);
+        const newPassword = bcryptjs.hashSync(Contraseña, salt);
 
         await Usuarios.findByIdAndUpdate(
-          usuario.id,
-          { password: newPassword },
+          usuario._id,
+          { Contraseña: newPassword },
           { new: true }
         );
 
