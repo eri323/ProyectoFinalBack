@@ -1,4 +1,4 @@
-import Area from "../models/Dependencia.js";
+import Area from "../models/Area.js";
 
 const httpArea = {
     getArea: async (req, res) => {

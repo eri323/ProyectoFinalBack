@@ -11,6 +11,7 @@ import Lote from "./routes/Lote.js";
 import Pedido from "./routes/Pedido.js";
 import Producto from "./routes/Producto.js";
 import Usuarios from "./routes/Usuarios.js";
+import Contrato from "./routes/Contrato.js";
 import cors from "cors"
 
 const index = express()
@@ -27,6 +28,7 @@ index.use("/api/lote", Lote)
 index.use("/api/pedido", Pedido)
 index.use("/api/producto", Producto)
 index.use("/api/usuario", Usuarios)
+index.use("/api/contrato", Contrato)
 
 
 index.listen(process.env.PORT, () => {
