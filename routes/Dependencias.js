@@ -3,15 +3,15 @@ import httpDependecia from "../controllers/Dependecias.js";
 import { check } from "express-validator";
 import validarCampos from "../middlewares/validarcampos.js"
 import { validarJWT } from "../middlewares/validar-jwt.js";
-import helpersPresupuesto from "../helpers/presupuesto.js";
+import helpersPresupuesto from "../helpers/Presupuesto.js";
 import { validarRolAdmin } from "../middlewares/validar-rol.js";
-import helpersDependencia from "../helpers/dependencia.js";
+import helpersDependencia from "../helpers/Dependencias.js";
 
 const router=new Router()
 
 // Get
-router.get('/dependeciabusca', validarJWT, httpDependecia.getAll)
-router.get('/dependeciabuscanombre/:Nombre', validarJWT, httpDependecia.getPorNombre) 
+router.get('/dependeciabusca', validarJWT, httpDependecia.getDependencia)
+router.get('/dependeciabuscanombre/:Nombre', validarJWT, httpDependecia.getDependenciaNombre) 
 router.get('/dependeciabuscaid/:id', [ 
   validarJWT,
   validarRolAdmin,

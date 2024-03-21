@@ -28,7 +28,7 @@ const httpDisDependencia = {
   },
 
   // Post
-  postDsiDependencias: async (req, res) => {
+  postDisDependencias: async (req, res) => {
     try {
       const { PresupuestoAsignado, Dependencia_id, Año } = req.body;
 

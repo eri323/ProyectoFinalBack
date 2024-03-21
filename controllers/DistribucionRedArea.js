@@ -13,7 +13,7 @@ const httpDisRedArea = {
     }
   },
 
-  getPorId: async (req, res) => {
+  getDisRedAreaId: async (req, res) => {
     try {
       const { id } = req.params;
       const disRedArea = await DisRedArea.findById(id)
@@ -25,7 +25,7 @@ const httpDisRedArea = {
     }
   },
 
-  getByIdDistribucion: async (req, res)=>{
+  getDisRedAreaIdDistribucion: async (req, res)=>{
     try {
       const { DsitribucionDependenciaRed_id } = req.params
 
@@ -38,8 +38,8 @@ const httpDisRedArea = {
     }
   },
 
-  // Post
-  post: async (req, res) => {
+
+  postDisRedArea: async (req, res) => {
     try {
       const { PresupuestoAsignado, DsitribucionDependenciaRed_id,AreaTematica_id ,Año } = req.body;
       const disRedArea = new DisRedArea({
@@ -57,7 +57,7 @@ const httpDisRedArea = {
   },
 
   // Put
-  putEditar: async (req, res) => {
+  putDisRedArea: async (req, res) => {
     try {
       const { id } = req.params;
       const {  PresupuestoAsignado, DsitribucionDependenciaRed_id,AreaTematica_id ,Año} = req.body;

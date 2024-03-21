@@ -41,7 +41,7 @@ const httpDisDependenciaRed = {
   },
 
   // Post
-  post: async (req, res) => {
+  postDisDepRed: async (req, res) => {
     try {
       const { PresupuestoAsignado, Dependencia_id, Red_id, Año } = req.body;
 
@@ -68,7 +68,7 @@ const httpDisDependenciaRed = {
   },
 
   // Put
-  putEditar: async (req, res) => {
+  putDisDepRed: async (req, res) => {
     try {
       const { id } = req.params;
       const { PresupuestoAsignado, Dependencia_id, Red_id, Año } = req.body;
@@ -87,7 +87,7 @@ const httpDisDependenciaRed = {
         id,
         {
           PresupuestoAsignado,
-          PresupuestoDisponible,
+          presupuestoDisponible,
           Dependencia_id,
           Red_id,
           Año

@@ -4,7 +4,7 @@ import helpersGeneral from "../helpers/generales.js";
 
 
 const httpDependencia = {
-  getDependenica: async (req, res) => {
+  getDependencia: async (req, res) => {
     try {
       const dependencias = await Dependencia.find();
       res.json(dependencias);
@@ -32,7 +32,7 @@ const httpDependencia = {
     }
   },
  */
-  getDependeciaNombre: async (req, res) => {
+  getDependenciaNombre: async (req, res) => {
     try {
       const { Nombre } = req.params;
       const dependencia = await Dependencia.find({ Nombre });

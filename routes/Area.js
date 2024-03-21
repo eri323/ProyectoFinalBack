@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import httpArea from "../controllers/Dependencia.js";
+import httpArea from "../controllers/Area.js";
 import helpersGeneral from "../helpers/General.js";
 import validarCampos from "../middlewares/validarcampos.js";
 import helpersArea from "../helpers/Area.js";

@@ -3,7 +3,7 @@ import httpContrato from "../controllers/Contrato.js";
 import { check } from "express-validator";
 import validarCampos from "../middlewares/validarcampos.js"
 import { validarJWT } from "../middlewares/validar-jwt.js";
-import helpersPresupuesto from "../helpers/presupuesto.js";
+import helpersPresupuesto from "../helpers/Presupuesto.js";
 import { validarRolAdmin } from "../middlewares/validar-rol.js";
 import helpersContrato from "../helpers/Contrato.js";
 
