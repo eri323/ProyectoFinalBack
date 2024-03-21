@@ -1,11 +1,11 @@
 import DisDependenciaRed from "../models/DistribucionDependenciaRed.js";
-import Dependencia from "../models/Dependecias.js";
+import Dependencia from "../models/Dependencias.js";
 import RedConocimiento from "../models/RedConocimiento.js";
 import DisRedArea from "../models/DistribucionRedArea.js";
 
 const httpDisDependenciaRed = {
 
-  getAll: async (req, res) => {
+  getDisDepRed: async (req, res) => {
     try {
       const distribucion = await DisDependenciaRed.find()
         .populate("Dependencia_id").populate("Red_id");
@@ -15,7 +15,7 @@ const httpDisDependenciaRed = {
     }
   },
 
-  getDistribucionesById: async (req, res) => {
+  getDisDepRedId: async (req, res) => {
     try {
       const { Red_id } = req.params;
       const distribucion = await DisDependenciaRed.find({ Red_id })
