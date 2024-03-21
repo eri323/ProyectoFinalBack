@@ -1,10 +1,10 @@
 import { Router } from "express"
 import httpDisAreaDestino from "../controllers/DistribucionAreaDestino.js";
 import { check } from "express-validator";
-import validarCampos from "../middlewares/validar.js"
+import validarCampos from "../middlewares/validarcampos.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
 import helpersPresupuesto from "../helpers/Presupuesto.js";
-import helpersDisAreaDestino from "../helpers/disAreaDestino.js";
+import helpersDisAreaDestino from "../helpers/DistribucionAreaDestino.js";
 import { validarRolAdmin } from "../middlewares/validar-rol.js";
 
 const router = new Router()

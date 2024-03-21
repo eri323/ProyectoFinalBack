@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import httpPedido from "../controllers/Pedido.js";
-import validarCampos from "../middelwares/validarcampos.js"
+import validarCampos from "../middlewares/validarcampos.js"
 
 const routers = Router();
 
@@ -39,16 +39,16 @@ routers.put('/pedidomodificar/:id', [
     validarCampos
 ], httpPedido.putPedidos);
 
-routers.put('/pedidoinac/:id', [
+/* routers.put('/pedidoinac/:id', [
     check("id", "Digite el id").not().isEmpty(),
     check("id", "Digite el id").isMongoId(),
     validarCampos
-], httpPedido.putPedidosInactivar);
+], httpPedido.putInactivar);
 
 routers.put('/pedidoact/:id', [
     check("id", "Digite el id").not().isEmpty(),
     check("id", "Digite el id").isMongoId(),
     validarCampos
-], httpPedido.putPedidosActivar);
+], httpPedido.putPedidosActivar); */
 
 export default routers;

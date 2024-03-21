@@ -1,6 +1,6 @@
 import Contrato from "../models/Contrato.js";
-import DisContratoLote from "../models/disContratoLote.js";
-import helpersGeneral from "../helpers/generales.js";
+import DisContratoLote from "../models/DistribucionContratoLote.js";
+import helpersGeneral from "../helpers/General.js";
 
 
 const httpContrato= {

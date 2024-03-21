@@ -1,4 +1,4 @@
-import helpersGeneral from "../helpers/generales.js";
+import helpersGeneral from "../helpers/General.js";
 import Entrada from "../models/Entrada.js"
 
 const httpEntrada = {

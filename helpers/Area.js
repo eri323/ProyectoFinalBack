@@ -1,4 +1,4 @@
-import Area from "../models/Dependencia.js";
+import Area from "../models/Dependencias.js";
 
 const helpersArea = {
     validarAreaUnica: async(Nombre, )=>{

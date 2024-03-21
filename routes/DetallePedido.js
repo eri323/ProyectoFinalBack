@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import httpDetallePedido from "../controllers/DetallePedido.js";
-import validarCampos from "../middelwares/validarcampos.js"
+import validarCampos from "../middlewares/validarcampos.js"
 import helpersDetallePedido from "../helpers/DetallePedido.js";
 import helpersPedido from "../helpers/Pedido.js";
 

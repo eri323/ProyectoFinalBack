@@ -1,4 +1,4 @@
-import Dependencia from "../models/Dependecias.js";
+import Dependencia from "../models/Dependencias.js";
 
 const helpersDependencia = {
   existeNombre: async (Nombre, req) => {

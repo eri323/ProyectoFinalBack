@@ -1,11 +1,11 @@
 import { Router } from "express";
 import httpDisRedArea from "../controllers/DistribucionRedArea.js";
 import { check } from "express-validator";
-import validarCampos from "../middlewares/validar.js";
+import validarCampos from "../middlewares/validarcampos.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
 import helpersPresupuesto from "../helpers/Presupuesto.js";
 import { validarRolAdmin } from "../middlewares/validar-rol.js";
-import helpersDisRedArea from "../helpers/disRedArea.js";
+import helpersDisRedArea from "../helpers/DistribucionRedArea.js";
 
 const router = new Router();
 

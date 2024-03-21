@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import validarCampos from "../middlewares/validar.js";
+import validarCampos from "../middlewares/validarcampos.js";
 import httpSalida from "../controllers/Salida.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
 import helpersUsuario from "../helpers/Usuarios.js";
@@ -8,7 +8,7 @@ import helpersDestino from "../helpers/Destino.js";
 
 const router = new Router();
 
-router.get("/salidabusca", validarJWT, httpSalida.getAll);
+router.get("/salidabusca", validarJWT, httpSalida.getSalidas);
 
 router.get(
     "/salidabuscaid/:id",

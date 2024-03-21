@@ -1,4 +1,4 @@
-import DisAreaDestino from "../models/disAreaDestino.js";
+import DisAreaDestino from "../models/DsitribucionAreaDestino.js";
 
 const httpDisAreaDestino = {
   getDisAreaDestino: async (req, res) => {

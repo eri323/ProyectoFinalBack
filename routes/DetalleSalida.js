@@ -1,9 +1,9 @@
 import { Router } from "express";
 import httpDetSalida from "../controllers/DetalleSalida.js";
 import { check } from "express-validator";
-import validarCampos from "../middlewares/validar.js";
+import validarCampos from "../middlewares/validarcampos.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
-import helpersDetSalida from "../helpers/detSalida.js";
+import helpersDetSalida from "../helpers/DetalleSalida.js";
 import helpersSalida from "../helpers/salida.js";
 
 const router = new Router();

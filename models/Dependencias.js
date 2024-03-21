@@ -11,4 +11,4 @@ const dependenciaSchema = new mongoose.Schema({
 });
 
 
-export default mongoose.model("Dependecia", dependenciaSchema)
+export default mongoose.model("Dependencias", dependenciaSchema)

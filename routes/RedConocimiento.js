@@ -1,7 +1,7 @@
 import { Router } from "express"
 import httpRedConocimiento from "../controllers/RedConocimiento.js";
 import { check } from "express-validator";
-import validarCampos from "../middlewares/validar.js"
+import validarCampos from "../middlewares/validarcampos.js"
 import { validarJWT } from "../middlewares/validar-jwt.js";
 import { validarRolAdmin } from "../middlewares/validar-rol.js";
 import helpersRedConocimiento from "../helpers/RedConocimiento.js";
@@ -9,8 +9,8 @@ import helpersRedConocimiento from "../helpers/RedConocimiento.js";
 const router = new Router()
 
 // Get
-router.get('/redconocimientobusca', validarJWT, httpRedConocimiento.getAll)
-router.get('/redconocimientobuscanombre/:Nombre', validarJWT, httpRedConocimiento.getPorNombre)
+router.get('/redconocimientobusca', validarJWT, httpRedConocimiento.getRedConocimiento)
+router.get('/redconocimientobuscanombre/:Nombre', validarJWT, httpRedConocimiento.getRedConocimientoNombre)
 
 // Post
 router.post('/redconocimentocrear', [

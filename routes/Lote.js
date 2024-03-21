@@ -2,7 +2,7 @@ import { Router } from "express";
 import { check } from "express-validator";
 import httpLote from "../controllers/Lote.js";
 import helpersGeneral from "../helpers/General.js";
-import validarCampos from "../middelwares/validarcampos.js"
+import validarCampos from "../middlewares/validarcampos.js"
 
 const routers = Router();
 

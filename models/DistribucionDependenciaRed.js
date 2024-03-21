@@ -4,7 +4,7 @@ const DistribucionDependenciaRedSchema = new mongoose.Schema({
   PresupuestoDisponible: { type: Number, require: true },
   Dependencia_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Dependencia",
+    ref: "Dependencias",
     require: true,
   },
   Red_id: {

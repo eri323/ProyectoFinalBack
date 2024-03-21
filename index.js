@@ -20,7 +20,7 @@ import Salida from "./routes/Salida.js";
 import Usuarios from "./routes/Usuarios.js";
 import Contrato from "./routes/Contrato.js";
 import cors from "cors"
-import { deserialize } from "mongodb";
+
 
 const index = express()
 index.use(cors());

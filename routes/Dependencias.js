@@ -1,5 +1,5 @@
-import { Router } from "express"
-import httpDependecia from "../controllers/Dependecias.js";
+import { Router } from "express";
+import httpDependencia from "../controllers/DependeNcias.js";
 import { check } from "express-validator";
 import validarCampos from "../middlewares/validarcampos.js"
 import { validarJWT } from "../middlewares/validar-jwt.js";
@@ -10,15 +10,15 @@ import helpersDependencia from "../helpers/Dependencias.js";
 const router=new Router()
 
 // Get
-router.get('/dependeciabusca', validarJWT, httpDependecia.getDependencia)
-router.get('/dependeciabuscanombre/:Nombre', validarJWT, httpDependecia.getDependenciaNombre) 
+router.get('/dependeciabusca', validarJWT, httpDependencia.getDependencia)
+router.get('/dependeciabuscanombre/:Nombre', validarJWT, httpDependencia.getDependenciaNombre) 
 router.get('/dependeciabuscaid/:id', [ 
   validarJWT,
   validarRolAdmin,
   check('id', 'Digite el id').not().isEmpty(),
   check('id', 'Digite el id').isMongoId(),
   validarCampos,
-], httpDependecia.getDependenciaId) 
+], httpDependencia.getDependenciaId) 
 
 
 // Post
@@ -33,7 +33,7 @@ router.post('/dependenciacrear',[
     check("presupuesto", "El presupuesto debe ser mayor a 0").custom(helpersPresupuesto.validarPresupuesto), 
     check('year', 'Ingrese un año').not().isEmpty(),
     validarCampos
-],httpDependecia.postDependencia)
+],httpDependencia.postDependencia)
 
 // Put
 router.put('/dependenciamodificar/:id', [
@@ -48,7 +48,7 @@ router.put('/dependenciamodificar/:id', [
     check("presupuestoAsignado", "El presupuesto debe ser mayor a 0").custom(helpersPresupuesto.validarPresupuesto), 
     check('year', 'Ingrese un año').not().isEmpty(),
     validarCampos
-], httpDependecia.putEditar)
+], httpDependencia.putEditar)
 
 router.put('/ajustarPresupuesto/:id',[
   validarJWT,
@@ -57,20 +57,20 @@ router.put('/ajustarPresupuesto/:id',[
     check("id", "No es mongo ID").isMongoId(),
     check("presupuestoAsignado","No hay ningun presupuesto").not().isEmpty(),
     validarCampos,
-],httpDependecia.putAjustarPresupuesto)
+],httpDependencia.putAjustarPresupuesto)
 
 router.put('/inactivar/:id', [
   validarJWT,
   validarRolAdmin,
     check("id", "ID no válido").isMongoId(),
     validarCampos
-], httpDependecia.putInactivar)
+], httpDependencia.putInactivar)
 
 router.put('/activar/:id', [
   validarJWT,
   validarRolAdmin,
     check("id", "ID no válido").isMongoId(),
     validarCampos
-], httpDependecia.putActivar)
+], httpDependencia.putActivar)
 
 export default router

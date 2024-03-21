@@ -1,4 +1,4 @@
-import DetSalida from "../models/detSalida.js";
+import DetSalida from "../models/DetalleSalida.js";
 
 const httpDetSalida = {
   getDetalleSalida: async (req, res) => {

@@ -2,7 +2,7 @@ import { Router } from "express";
 import { check } from "express-validator";
 import httpProducto from "../controllers/Producto.js"
 import helpersGeneral from "../helpers/General.js";
-import validarCampos from "../middelwares/validarcampos.js"
+import validarCampos from "../middlewares/validarcampos.js"
 import helpersProducto from "../helpers/Producto.js";
 
 const routers = Router();

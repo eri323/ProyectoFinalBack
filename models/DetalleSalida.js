@@ -11,4 +11,4 @@ const disAreaDestinoSchema = new mongoose.Schema({
 });
 
 
-export default mongoose.model("DistribucionAreaDestino", disAreaDestinoSchema)
+export default mongoose.model("DetalleSalida", disAreaDestinoSchema)

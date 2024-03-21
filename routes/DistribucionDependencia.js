@@ -1,10 +1,10 @@
 import { Router } from "express"
 import httpDisDependencia from "../controllers/DistribucionDependencia.js";
 import { check } from "express-validator";
-import validarCampos from "../middlewares/validar.js"
+import validarCampos from "../middlewares/validarcampos.js"
 import { validarJWT } from "../middlewares/validar-jwt.js";
 import helpersPresupuesto from "../helpers/Presupuesto.js";
-import helpersDisDependencia from "../helpers/Dependencia.js";
+import helpersDistribucionDepenencia from "../helpers/DistribucionDependencias.js";
 import { validarRolAdmin } from "../middlewares/validar-rol.js";
 
 const router = new Router()
@@ -34,7 +34,7 @@ router.post('/disdepcrear', [
     check("PresupuestoAsignado", "El presupuesto debe ser mayor a 0").custom(helpersPresupuesto.validarPresupuesto),
     check("Dependencia_id", "ID no válido").not().isEmpty(),
     check("Dependencia_id", "ID no válido").isMongoId(),
-    check("Dependencia_id", "ID no válido").custom(helpersDisDependencia.existeDistribucion),
+    check("Dependencia_id", "ID no válido").custom(helpersDistribucionDepenencia.existeDistribucion),
     check('Año', 'Ingrese un año').not().isEmpty(),
     validarCampos
 ], httpDisDependencia.postDisDependencias)
@@ -49,7 +49,7 @@ router.put('/disdepmodificar/:id', [
     check("PresupuestoAsignado", "El presupuesto debe ser mayor a 0").custom(helpersPresupuesto.validarPresupuesto),
     check("Dependencia_id", "ID no válido").not().isEmpty(),
     check("Dependencia_id", "ID no válido").isMongoId(),
-    check("Dependencia_id", "ID no válido").custom(helpersDisDependencia.existeDistribucion),
+    check("Dependencia_id", "ID no válido").custom(helpersDistribucionDepenencia.existeDistribucion),
     check('Año', 'Ingrese un año').not().isEmpty(),
     validarCampos
 ], httpDisDependencia.putDisDependencia)

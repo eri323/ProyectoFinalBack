@@ -1,5 +1,5 @@
 import Usuarios from "../models/Usuarios.js";
-import { generarJWT } from "../middelwares/validar-jwt.js";
+import { generarJWT } from "../middlewares/validar-jwt.js";
 import bcryptjs from "bcrypt"
 import nodemailer from "nodemailer"
 

@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import Usuario from "../models/Usuario.js"
+import Usuario from "../models/Usuarios.js"
 
 const validarRolAdmin = async(req, res, next) => {
   const token = req.header("x-token");

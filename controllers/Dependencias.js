@@ -1,6 +1,6 @@
-import Dependencia from "../models/Dependecias.js";
-import DisDependenciaRed from "../models/disDependenciaRed.js";
-import helpersGeneral from "../helpers/generales.js";
+import Dependencia from "../models/Dependencias.js";
+import DisDependenciaRed from "../models/DistribucionDependenciaRed.js";
+import helpersGeneral from "../helpers/General.js";
 
 
 const httpDependencia = {

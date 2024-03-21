@@ -1,4 +1,4 @@
-import DistribucionContratoLote from "../models/DistribucionContratoLote";
+import DistribucionContratoLote from "../models/DistribucionContratoLote.js";
 
 const helpersDistribucionContratoLote = {
     existeDistribucion: async (Dependencia_id, req) => {
